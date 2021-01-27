@@ -1,18 +1,3 @@
-// import './App.css';
-// // import BlockChainCard from './components/BlockChainCard'
-// import Card from './components/Card'
-
-// function App() {
-//   return (
-//     <div className="App">
-
-//       <Card />
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React, { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Layout, Menu, notification } from 'antd';
@@ -21,7 +6,8 @@ import 'antd/dist/antd.css';
 
 import Login from './components/login';
 import SignUp from './components/SignUp';
-import Card from './components/Card'
+// import Card from './components/Card'
+import BlockChainCard from './components/BlockChainCard'
 
 // firebase
 import firebase from '../src/config/firebase';
@@ -46,13 +32,16 @@ const App = (() => {
   const _rendserRoutes = () => {
     return <Switch>
       <Route exact path="/login" component={Login} />
-      <Route exact path="/Card" component={Card} />
+      {user === null ? (<Route exact path="/" component={Login} />) : <Route exact path="/" component={BlockChainCard} />}
+      {user != null ? (<Route exact path="/BlockChainCard" component={BlockChainCard} />) : <Route exact path="/BlockChainCard" component={Login} />}
       <Route exact path="/signup" component={SignUp} />
     </Switch>
   }
 
   return <Router>
-    <Layout>
+    <Layout style={{
+      background: '#fff'
+    }}>
       <Header
         style={{
           display: 'flex'

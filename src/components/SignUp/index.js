@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { Button, Form, Input, notification, Select } from 'antd';
+import React from 'react';
+import { Button, Form, Input, notification } from 'antd';
 // firebase
 import firebase from '../../config/firebase';
 // router
@@ -25,7 +25,7 @@ export default (props) => {
 
     const signUp = (e) => {
         firebase.auth().createUserWithEmailAndPassword(e.email, e.password).then((res) => {
-            history.push('Card')
+            history.push('BlockChainCard')
         }).catch((e) => {
             notification.open({
                 message: "Error",
