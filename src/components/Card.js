@@ -84,8 +84,13 @@
 
 
 import React, { useState, useEffect } from "react";
+import Faker from 'faker'
 import './Card.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import firebase from '../config/firebase'
 const Card = (props) => {
+    const [peers, setPeers] = useState([]);
     const [blockChainCardDetails, setBlockChainCardDetails] = useState([
         {
             index: Math.random(),
@@ -129,6 +134,29 @@ const Card = (props) => {
     //     event.preventDefault()
     //     setBlockChainCardDetails({ ...blockChainCardDetails, name: event.target.value })
     // };
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((client) => {
+            if (client) {
+                console.log(client)
+                firebase.firestore().collection('Users').where("by", "==", client.email).get().then((snapshot) => {
+                    snapshot.forEach((snap) => {
+                        setPeers(st => [...st, snap.data().name])
+                    })
+                }).catch((e) => { console.log(e) })
+            }
+        })
+    }, [])
+
+    useEffect(() => {
+        console.log(peers)
+    }, [peers])
+
+    const addPeers = async () => {
+        const email = firebase.auth().currentUser.email
+        const name = Faker.name.firstName()
+        firebase.firestore().collection('Users').add({ name, by: email })
+        setPeers(st => [...st, name])
+    }
 
     console.log("checking: ", blockChainCardDetails)
     return blockChainCardDetails.map((val, idx) => {
@@ -173,7 +201,7 @@ const Card = (props) => {
                         <div className="ant-tag-green-style" style={{ border: "1px solid green", borderRadius: '5px', padding: '2px' }}><span className="ant-tag-text">{val.hash}</span></div>
                     </div>
                     <div className='footer'>
-                        <h2 style={{ letterSpacing: '5px', fontWeight: 'lighter' }}>{Genesis}</h2>
+                        <h2 style={{ letterSpacing: '5px', fontWeight: 'lighter', marginTop: '25px' }}>{Genesis}</h2>
                         <div style={{ fontSize: '12px', marginTop: '6%', justifyContent: 'center', display: "flex", fontWeight: 'lighter', marginLeft: '2%' }}>on {Date}</div>
                         <span style={{ fontSize: '20px', marginTop: '4%', fontWeight: 'lighter', padding: '2px', marginLeft: '17%' }}>{Math.floor(val.random)}</span>
                     </div>
@@ -196,6 +224,10 @@ const Card = (props) => {
                     <div className="add-button" onClick={() => { addNewRow() }} type="button">
                         + ADD NEW BLOCK
                     </div>
+                </div>
+                <div onClick={() => { addPeers() }}>
+                    Add peers
+                    <FontAwesomeIcon icon="coffee" />{peers}
                 </div>
             </div>
         );

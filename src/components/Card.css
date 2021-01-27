@@ -1,6 +1,6 @@
 .blockchain-card {
-    width: 35rem;
-    height: 10rem;
+    width: 37rem;
+    height: 12rem;
     margin-left: auto;
     margin-right: auto;
     margin-top: 4%;
@@ -15,14 +15,14 @@
 
 .blockChain-addCard {
     width: 15rem;
-    height: 6rem;
+    height: 8rem;
     margin-left: auto;
     margin-right: auto;
     margin-top: 4%;
     margin-bottom: 5%;
     border-radius: 10px;
     padding-top: 2%;
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
     background: #ffffff;
     overflow: hidden;
@@ -49,7 +49,7 @@
 .ant-input {
     float: left;
     background: #ffffff;
-    width: 90%;
+    width: 95%;
     padding: 5px;
     border: solid 1px rgb(59, 56, 56);
     border-radius: 5px;
@@ -125,16 +125,31 @@
 }
 
 .add-button {
+    /* width: 10em;
+    height: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    display: flex;
+    border: 1px solid rgb(240, 146, 38);
+    background: linear-gradient(45deg, #d4145a, #fbb03b);
+    justify-content: center;
+    padding: 18px;
+    border-radius: 30px;
+    font-size: small;
+    cursor: pointer; */
     width: 10em;
     height: 2em;
     margin-left: auto;
     margin-right: auto;
     margin-top: 25px;
+    margin-bottom: 70px;
     display: flex;
     border: 1px solid rgb(240, 146, 38);
     background: linear-gradient(45deg, #d4145a, #fbb03b);
     justify-content: center;
-    padding: 14px;
+    /* padding: 5px; */
     border-radius: 30px;
     font-size: small;
     cursor: pointer;
