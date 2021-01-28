@@ -1,3 +1,7 @@
+.body {
+  background-color: #f9f9fb;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +9,59 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.fa {
+  padding:8px;
+  font-size: 15px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #40a9ff;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #40a9ff;
+  color: white;
+}
+/* Mail */
+.fa-envelope {
+  background: #40a9ff;
+  color: white;
+}
+
+/* Medium */
+.fa-medium {
+  background: #40a9ff;
+  color: white;
+}
+/* Linkedin */
+.fa-linkedin {
+  background: #40a9ff;
+  color: white;
+}
+
+/* Github */
+.fa-github {
+  background: #40a9ff;
+  color: white;
+}
+/* Google */
+.fa-google {
+  background: #40a9ff;
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -32,6 +89,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

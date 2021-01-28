@@ -38,7 +38,7 @@ export default () => {
         style={{
             display: 'flex',
             flexDirection: 'column',
-            paddingTop: 40,
+            paddingTop: 100,
             paddingBottom: 40,
             alignItems: 'center'
         }}>

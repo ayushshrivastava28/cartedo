@@ -1,5 +1,7 @@
 import React from "react";
 import './Card.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
 const Card = props => {
 
     console.log("checking: ", props.blockChainCardDetails)
@@ -14,15 +16,21 @@ const Card = props => {
 
         let Date = val.date.substring(0, 28)
         return (
-            <div>
-                <div key={val.index} className='blockchain-card'>
+            <div key={idx}>
+                <div className='blockchain-card'>
                     <div className="Card-Header">
                         <button disabled={true} style={{ width: '6em' }}>DATA</button>
+                        <FontAwesomeIcon icon={faFileAlt} size='2x' color='grey' />
                         <div style={{ width: "100%" }}>
+
                             <input
                                 type="text"
                                 className="ant-input"
                                 value={val.name}
+                                onChange={(e) => {
+                                    const text = e.currentTarget.value;
+                                    props.setBlockChainCardDetails(st => st.map(x => x.date === val.date ? { ...x, name: text } : x))
+                                }}
                                 data-id={idx}
                                 id={name}
                             />
@@ -30,7 +38,7 @@ const Card = props => {
                     </div>
                     <div className='content'>
                         <div style={{ whiteSpace: "nowrap", fontWeight: 'lighter', fontSize: '13px', opacity: '0.8' }}>PREVIOUS HASH</div>
-                        <div style={{ fontSize: "15px", float: "right", display: "block", bordercColor: "transparent", marginLeft: '1%' }}><span class="ant-tag-text">{val.previousHash}</span></div>
+                        <div style={{ fontSize: "12px", float: "right", display: "block", bordercColor: "transparent", marginLeft: '1%' }}><span class="ant-tag-text">{val.previousHash}</span></div>
                     </div>
                     <div className='HashContent'>
                         <div style={{ marginRight: "15px", fontWeight: 'lighter', fontSize: '13px', opacity: '0.8' }}>HASH</div>
