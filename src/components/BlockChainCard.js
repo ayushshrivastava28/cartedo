@@ -4,11 +4,9 @@ import PeersView from './PeersView'
 import Faker from 'faker'
 import firebase from '../config/firebase'
 import './Card.css'
-import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 const BlockChainCard = () => {
-    const history = useHistory();
     const [peers, setPeers] = useState([]);
     const [activePeer, setActivePeer] = useState("");
     const [name, setName] = useState('');

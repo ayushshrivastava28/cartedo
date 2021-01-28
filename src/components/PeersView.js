@@ -17,10 +17,10 @@ export default function PeersView(props) {
     return props.peers.map((val, idx) => {
         console.log('val', val)
         return (
-            <div style={{ display: 'flex', flexDirection: "row", opacity: props.activePeer == val._id ? 0.5 : 1.0 }}
+            <div  style={{display:'flex',flexDirection:'column', marginLeft: '50px',alignItems:'center'}}
                 onClick={() => props.onClick(val._id)}>
-                <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center', marginLeft: '50px' }}>
-                    <FontAwesomeIcon icon={faUserFriends} size='3x' />
+                <div style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
+                    <FontAwesomeIcon icon={faUserFriends} size='3x' className = {props.activePeer == val._id?"active-peers":''} />
                     {val.name}
                 </div>
                 <div
